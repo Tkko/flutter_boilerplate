@@ -1,41 +1,8 @@
+# flutter_boilerplate
+
+Flutter boilerplate project, That I personally use most of the time.
 
 
-📦lib
- ┣ 📂app
- ┃ ┣ 📂bloc
- ┃ ┃ ┣ 📜app_cubit.dart
- ┃ ┃ ┗ 📜app_state.dart
- ┃ ┣ 📂config
- ┃ ┃ ┗ 📜app_config.dart
- ┃ ┣ 📂localization
- ┃ ┃ ┣ 📜app_localizations.dart
- ┃ ┃ ┗ 📜app_localizer.dart
- ┃ ┣ 📂router
- ┃ ┃ ┣ 📜app_router.dart
- ┃ ┃ ┗ 📜app_router.gr.dart
- ┃ ┣ 📂styles
- ┃ ┃ ┣ 📜app_colors.dart
- ┃ ┃ ┣ 📜app_theme.dart
- ┃ ┃ ┗ 📜dimensions.dart
- ┃ ┣ 📂view
- ┃ ┃ ┗ 📜app_view.dart
- ┃ ┗ 📜app.dart
- ┣ 📂assets
- ┃ ┗ 📜assets.gen.dart
- ┣ 📂common
- ┃ ┣ 📂services
- ┃ ┃ ┗ 📂api
- ┃ ┗ 📂widgets
- ┃ ┃ ┗ 📜app_loader.dart
- ┣ 📂features
- ┃ ┣ 📂home
- ┃ ┃ ┗ 📂view
- ┃ ┃ ┃ ┗ 📜home_page.dart
- ┃ ┗ 📂splash
- ┃ ┃ ┗ 📂view
- ┃ ┃ ┃ ┗ 📜splash_screen.dart
- ┣ 📂utils
- ┣ 📜generated_plugin_registrant.dart
- ┗ 📜main.dart
- 
- 
+Folder Strucutre
+
+![Screen Shot 2022-05-15 at 3 15 12 PM](https://user-images.githubusercontent.com/26390946/168469932-65d8109f-6dcc-4775-a130-fb6524e91c32.png)
