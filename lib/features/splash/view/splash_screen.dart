@@ -6,9 +6,15 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: AppLoader(),
+    return const MediaQuery(
+      data: MediaQueryData(),
+      child: Directionality(
+        textDirection: TextDirection.ltr,
+        child: Scaffold(
+          body: Center(
+            child: AppLoader(),
+          ),
+        ),
       ),
     );
   }

@@ -1,12 +1,36 @@
 part of 'app_cubit.dart';
 
-@immutable
-abstract class AppState {}
+enum LoadingStatus {
+  initial,
+  loading,
+  loaded,
+  failed,
+}
 
-class AppStateInitial extends AppState {}
+class AppState {
+  final Locale locale;
+  final ThemeData? theme;
+  final ThemeMode themeMode;
+  final LoadingStatus status;
 
-class AppStateLoading extends AppState {}
+  AppState({
+    this.theme,
+    this.themeMode = ThemeMode.system,
+    this.locale = AppConfig.defaultLocale,
+    this.status = LoadingStatus.initial,
+  });
 
-class AppStateLoaded extends AppState {}
-
-class AppStateFailed extends AppState {}
+  AppState copyWith({
+    Locale? locale,
+    ThemeData? theme,
+    ThemeMode? themeMode,
+    LoadingStatus? status,
+  }) {
+    return AppState(
+      locale: locale ?? this.locale,
+      theme: theme ?? this.theme,
+      themeMode: themeMode ?? this.themeMode,
+      status: status ?? this.status,
+    );
+  }
+}

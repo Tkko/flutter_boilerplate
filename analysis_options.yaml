@@ -7,9 +7,15 @@
 
 # The following line activates a set of recommended lints for Flutter apps,
 # packages, and plugins designed to encourage good coding practices.
-include: package:flutter_lints/flutter.yaml
+
+
+include: package:very_good_analysis/analysis_options.3.0.0.yaml
+
 
 analyzer:
+  strong-mode:
+    implicit-casts: false
+    implicit-dynamic: true
   exclude:
     - 'packages/*'
 
@@ -27,10 +33,25 @@ linter:
   # producing the lint.
   rules:
     depend_on_referenced_packages: false
+    public_member_api_docs: false
+    sort_pub_dependencies: false
+    directives_ordering: false
+    flutter_style_todos: false
+    lines_longer_than_80_chars: false
+    avoid_relative_lib_imports: false
+    always_use_package_imports: false
+    sort_constructors_first: false
+    cascade_invocations: false
+    one_member_abstracts: false
+    unnecessary_this: false
+
+
     prefer_const_constructors: true
     prefer_final_locals: true
     prefer_final_fields: true
     prefer_single_quotes: true
+
+
 
 
 # Additional information about this file can be found at

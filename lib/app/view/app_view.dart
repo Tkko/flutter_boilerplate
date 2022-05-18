@@ -1,5 +1,4 @@
-import 'package:flutter_boilerplate/app/app.dart';
-import 'package:flutter_boilerplate/app/bloc/app_cubit.dart';
+part of '../app.dart';
 
 class App extends StatefulWidget {
   const App({Key? key}) : super(key: key);
@@ -42,11 +41,7 @@ class _AppState extends State<App> with WidgetsBindingObserver {
     }
   }
 
-  void onAppStateChanged(_, AppState state) {
-    if (state is AppStateLoaded) {
-      getIt<AppRouter>().replace(const HomeRoute());
-    }
-  }
+  void onAppStateChanged(_, AppState state) {}
 
   @override
   Widget build(BuildContext context) {
@@ -58,27 +53,39 @@ class _AppState extends State<App> with WidgetsBindingObserver {
       child: BlocListener<AppCubit, AppState>(
         bloc: appCubit,
         listener: onAppStateChanged,
-        child: MaterialApp.router(
-          routeInformationParser: getIt<AppRouter>().defaultRouteParser(),
-          routerDelegate: getIt<AppRouter>().delegate(),
-        ),
+        child: const LocalizeApp(),
       ),
     );
   }
 }
 
 class LocalizeApp extends StatelessWidget {
-  final Widget child;
+  const LocalizeApp({this.child, Key? key}) : super(key: key);
 
-  const LocalizeApp({required this.child, Key? key}) : super(key: key);
+  final Widget? child;
 
   @override
   Widget build(BuildContext context) {
-    return EasyLocalization(
-      supportedLocales: AppConfig.supportedLocales,
-      path: AppConfig.translationsPath,
-      fallbackLocale: AppConfig.localeEn,
-      child: child,
+    return BlocBuilder<AppCubit, AppState>(
+      builder: (_, AppState state) {
+        if (state.status == LoadingStatus.loaded) {
+          return MaterialApp.router(
+            theme: state.theme,
+            locale: state.locale,
+            routeInformationParser: getIt<AppRouter>().defaultRouteParser(),
+            routerDelegate: getIt<AppRouter>().delegate(),
+            localizationsDelegates: [
+              AppLocalizations.delegate(AppConfig.supportedLocales),
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            supportedLocales: AppConfig.supportedLocales,
+          );
+        }
+
+        return const SplashScreen();
+      },
     );
   }
 }
